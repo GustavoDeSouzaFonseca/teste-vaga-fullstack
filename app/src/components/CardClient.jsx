@@ -1,4 +1,4 @@
-import { toastConfig } from '@/services/toast'
+'use client'
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 
@@ -39,8 +39,10 @@ export default function CardClient({
     })
 
     if (!response.ok) {
+      console.error(`HTTP error! Status: ${response.status}`)
       return toast.error(`HTTP error! Status: ${response.status}`, toastConfig);
     } else {
+      console.log('Agencia salva no banco!')
       return toast.success('Agencia salva no banco!')
     }
   }

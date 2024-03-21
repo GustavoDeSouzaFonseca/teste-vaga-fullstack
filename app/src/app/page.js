@@ -126,7 +126,7 @@ export default function Page() {
             />
           </>
         )}
-      <ToastContainer />
+      {/* deprecated by me ... <ToastContainer /> */}
       </footer>
     </div>
   )
