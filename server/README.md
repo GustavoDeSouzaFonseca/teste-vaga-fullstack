@@ -75,7 +75,7 @@ BASE_URL and PORT could be used by .env
 
 `/agency`
   * `GET /agency - listAllAgency`
-  * `GET /agency - findAgencyByNrInst`
+  * `GET /agency/:nrInst - findAgencyByNrInst`
   * `POST /agency - createAgency`
-  * `PUT /agency - updateAgencyByNrInst`
-  * `DELETE /agency - deleteAgencyByNrInst`
+  * `PUT /agency/:nrInst - updateAgencyByNrInst`
+  * `DELETE /agency/:nrInst - deleteAgencyByNrInst`
