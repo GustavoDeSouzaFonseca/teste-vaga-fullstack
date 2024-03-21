@@ -16,7 +16,7 @@ export default class CsvController {
         return next(new BaseError('File is not a CSV file'));
       }
 
-      CsvService.createReadStream(file, res)
+      CsvService.createReadStream(file, res, req)
     } catch (err) {
       console.error(err)
       next(err);

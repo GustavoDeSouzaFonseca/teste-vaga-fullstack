@@ -1,12 +1,12 @@
 import express from 'express';
-import Neode from 'neode';
 import routes from './routes/index.js';
 import errorsManipulator from './middlewares/errorsManipulator.js';
+import cors from 'cors'
+import neode from './config/db/neo4j.js';
 
 const app = express();
-const instance = new Neode('bolt://localhost:7687', 'neo4j', 'Dbakroo@2024');
 
-instance.cypher('MATCH (n) RETURN count(n)')
+neode.cypher('MATCH (n) RETURN count(n)')
   .then(result => {
     console.log('Success connection at database.');
   })
@@ -14,6 +14,14 @@ instance.cypher('MATCH (n) RETURN count(n)')
     console.error('Error to connect at database:', error);
   });
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: 'POST',
+  credentials: true,
+  optionsSuccessStatus: 204,
+}
+
+app.use(cors(corsOptions))
 routes(app)
 app.use(errorsManipulator)
 
